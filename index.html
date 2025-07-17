@@ -1,396 +1,811 @@
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synthex Nexus: Gaming & Future Tech</title>
+    <title>ArcadeVerse - Your Ultimate Gaming & Tech Hub</title>
     <style>
-        /* General Body Styles */
-        body {
-            font-family: 'Electrolize', 'Roboto Mono', monospace, sans-serif; /* Tech-inspired fonts */
-            background-color: #0A0A0F; /* Deep dark background */
-            color: #E0E6F0; /* Light text for contrast */
+        /* General Styles & Resets */
+        :root {
+            --primary-bg: #1a1a2e;
+            --secondary-bg: #16213e;
+            --accent-bg: #0f3460;
+            --text-color: #e0e0e0;
+            --accent-color: #e94560;
+            --light-accent: #533483;
+            --border-color: #0c0f1c;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --border-radius: 8px;
+            --padding-section: 60px 20px;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--primary-bg);
+            color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            background-image: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0f 75%); /* Subtle gradient */
+            overflow-x: hidden;
         }
 
-        /* Google Fonts Import */
-        @import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Roboto+Mono:wght@400;700&display=swap');
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(90deg, #1C2333, #0A0A0F);
-            color: #00F0FF; /* Neon blue accent */
-            padding: 25px 0;
-            text-align: center;
-            border-bottom: 3px solid #00F0FF;
-            box-shadow: 0 5px 20px rgba(0, 240, 255, 0.25); /* Glowing shadow */
-            position: relative;
-            z-index: 1000;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3.2em;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
-            font-family: 'Electrolize', sans-serif;
-        }
-
-        /* Navigation Styles */
-        nav {
-            margin-top: 20px;
-        }
-
-        nav a {
-            color: #A0FFFF; /* Lighter neon blue for links */
+        a {
+            color: var(--accent-color);
             text-decoration: none;
-            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--light-accent);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--accent-color);
+            margin-bottom: 0.8em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: var(--padding-section);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--secondary-bg);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
             font-weight: bold;
-            font-size: 1.2em;
-            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 5px 0;
             position: relative;
-            padding-bottom: 5px;
         }
 
-        nav a:hover {
-            color: #00F0FF;
-            text-shadow: 0 0 10px #00F0FF;
-            transform: translateY(-2px);
-        }
-
-        nav a::after {
+        nav ul li a::after {
             content: '';
             position: absolute;
-            left: 50%;
             bottom: 0;
-            transform: translateX(-50%) scaleX(0);
-            width: 100%;
+            left: 0;
+            width: 0;
             height: 2px;
-            background-color: #00F0FF;
-            transition: transform 0.3s ease;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
         }
 
-        nav a:hover::after {
-            transform: translateX(-50%) scaleX(1);
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
-        /* Main Content Container */
-        .container {
-            max-width: 1280px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #151A22; /* Slightly lighter dark for main container */
-            border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); /* Container glow */
-            border: 1px solid #2A3140; /* Subtle border */
+        /* Hero Section */
+        #home {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x800/1a1a2e/e0e0e0?text=Epic+Gaming+Adventure') center/cover no-repeat;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
         }
 
-        /* Section Styles */
-        .section {
-            background-color: #1A212E; /* Darker background for sections */
-            padding: 40px;
-            margin-bottom: 40px;
-            border-radius: 10px;
-            border: 1px solid #303747; /* Section border */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.08); /* Inner glow */
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+        .hero-content {
+            max-width: 800px;
         }
 
-        .section:hover {
-            transform: translateY(-8px); /* Lift effect on hover */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.15);
-        }
-
-        .section h2 {
-            color: #00F0FF;
-            font-size: 2.5em;
-            margin-bottom: 25px;
-            border-bottom: 3px solid #00F0FF;
-            padding-bottom: 15px;
-            text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
-            font-family: 'Electrolize', sans-serif;
-            position: relative;
-            display: inline-block; /* To make border-bottom fit content */
-        }
-
-        .section h2::before {
-            content: "// "; /* Techy prefix */
-            color: #8AFFFF;
-            font-size: 0.8em;
-            margin-right: 5px;
-        }
-
-        .section p {
-            color: #C0C8D8;
+        .hero-content h1 {
+            font-size: 3.5em;
             margin-bottom: 20px;
-            font-size: 1.1em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
-        /* Grid for content blocks */
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn:hover {
+            background-color: var(--light-accent);
+            transform: translateY(-3px);
+        }
+
+        /* Grid Sections (News, Products) */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .grid-item {
-            background-color: #242A38; /* Grid item background */
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #454D60;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .grid-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.4);
-            border-color: #00F0FF;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .grid-item h3 {
-            color: #8AFFFF;
-            margin-top: 0;
-            font-size: 1.8em;
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grid-item-content {
+            padding: 20px;
+        }
+
+        .grid-item-content h3 {
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .grid-item-content p {
+            font-size: 0.95em;
+            color: var(--text-color);
             margin-bottom: 15px;
-            text-shadow: 0 0 5px rgba(138, 255, 255, 0.3);
         }
 
-        .grid-item p {
-            font-size: 1em;
+        /* Community Section */
+        #community .community-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .community-link {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .community-link:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-bg);
+        }
+
+        .community-link h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .community-link .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: var(--light-accent);
+        }
+
+        /* Documentation Section */
+        #documentation .doc-category {
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #documentation .doc-category h3 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
 
-        .grid-item .button {
-            display: inline-block;
-            background-color: #00F0FF; /* Button background */
-            color: #0A0A0F; /* Button text color */
-            padding: 12px 25px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            margin-top: 15px;
-            border: none;
+        .faq-item details {
+            background-color: var(--accent-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            padding: 15px 20px;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
         }
 
-        .grid-item .button:hover {
-            background-color: #00D8E0; /* Darker on hover */
-            transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+        .faq-item details:hover {
+            background-color: var(--light-accent);
         }
 
-        /* Footer Styles */
-        footer {
-            background-color: #1C2333; /* Darker footer */
-            color: #A0FFFF;
+        .faq-item summary {
+            font-weight: bold;
+            color: var(--text-color);
+            outline: none;
+            padding-right: 20px; /* Space for expand/collapse arrow */
+            position: relative;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 1.5em;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item details[open] summary::after {
+            content: '-';
+            transform: rotate(45deg);
+        }
+
+        .faq-item p {
+            padding-top: 15px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            margin-top: 15px;
+            color: var(--text-color);
+        }
+
+        .guide-item {
+            background-color: var(--accent-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .guide-item h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .api-table th, .api-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .api-table th {
+            background-color: var(--light-accent);
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .api-table tr:nth-child(even) {
+            background-color: var(--secondary-bg);
+        }
+
+        .api-table tr:hover {
+            background-color: var(--accent-bg);
+        }
+
+        /* About & Contact Sections */
+        #about {
             text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 3px solid #00F0FF;
-            box-shadow: 0 -5px 20px rgba(0, 240, 255, 0.25);
-            font-size: 0.95em;
         }
 
-        footer p {
-            margin: 5px 0;
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
         }
 
-        footer a {
-            color: #00F0FF;
-            text-decoration: none;
-            margin: 0 8px;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        footer a:hover {
-            color: #8AFFFF;
-            text-shadow: 0 0 5px #00F0FF;
+        .team-member {
+            background-color: var(--secondary-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--accent-color);
+        }
+
+        .team-member h4 {
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            font-size: 0.9em;
+            color: var(--accent-color);
+            margin-bottom: 0;
+        }
+
+        #contact .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: var(--border-radius);
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .form-group button:hover {
+            background-color: var(--light-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-bg);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Utility classes */
+        .text-center {
+            text-align: center;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            header h1 {
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero-content h1 {
                 font-size: 2.5em;
             }
 
-            nav a {
-                margin: 0 10px;
+            .hero-content p {
                 font-size: 1em;
             }
 
-            .container {
-                margin: 30px auto;
-                padding: 20px;
-            }
-
-            .section {
-                padding: 30px;
-                margin-bottom: 30px;
-            }
-
-            .section h2 {
-                font-size: 2em;
+            section {
+                padding: 40px 15px;
             }
 
             .grid-container {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 20px;
+                grid-template-columns: 1fr;
             }
 
-            .grid-item {
-                padding: 20px;
+            .community-link {
+                width: 100%;
+            }
+
+            .team-member {
+                width: 100%;
             }
         }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-                letter-spacing: 2px;
-            }
-
-            nav {
-                margin-top: 10px;
-            }
-
-            nav a {
-                display: block;
-                margin: 8px 0;
-                padding: 5px 0;
-            }
-
-            .container {
-                margin: 20px;
-                padding: 15px;
-            }
-
-            .section {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-
-            .section h2 {
-                font-size: 1.8em;
-                margin-bottom: 15px;
-            }
-
-            .grid-container {
-                grid-template-columns: 1fr; /* Stack items on small screens */
-                gap: 15px;
-            }
-
-            .grid-item {
-                padding: 18px;
-            }
-
-            .grid-item h3 {
+        @media (max-width: 480px) {
+            .logo {
                 font-size: 1.5em;
             }
-
-            footer {
-                padding: 20px 0;
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>&lt;SYNTHEX // NEXUS /&gt;</h1>
-        <nav>
-            <a href="#gaming-hub">Gaming Hub</a>
-            <a href="#tech-insights">Tech Insights</a>
-            <a href="#developers">Developers</a>
-            <a href="#contact">Connect</a>
-        </nav>
+        <div class="container header-content">
+            <div class="logo">ArcadeVerse</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#documentation">Docs</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="container">
-        <section id="gaming-hub" class="section">
-            <h2>Gaming Hub &gt; Explore Dimensions</h2>
-            <p>Step into the future of interactive entertainment. Our gaming hub features cutting-edge titles, community events, and esports analytics. Immerse yourself in worlds crafted with unparalleled detail and dynamic gameplay.</p>
-            <div class="grid-container">
-                <div class="grid-item">
-                    <h3>Cyber-Glitch Arena</h3>
-                    <p>A fast-paced multiplayer combat arena set in a dystopian future. Master unique abilities and dominate the leaderboards.</p>
-                    <a href="#" class="button">Access Protocol</a>
-                </div>
-                <div class="grid-item">
-                    <h3>Chronos Odyssey</h3>
-                    <p>An epic single-player RPG where your choices alter the fabric of time. Uncover ancient secrets and reshape history.</p>
-                    <a href="#" class="button">Initiate Simulation</a>
-                </div>
-                <div class="grid-item">
-                    <h3>Neural Net Racer</h3>
-                    <p>Experience high-speed futuristic racing with sentient AI opponents. Optimize your vehicle and conquer the tracks.</p>
-                    <a href="#" class="button">Engage Drive</a>
+    <main>
+        <section id="home">
+            <div class="container hero-content">
+                <h1>Unleash Your Inner Gamer & Tech Enthusiast</h1>
+                <p>Dive into the latest gaming trends, cutting-edge tech, in-depth reviews, and vibrant community discussions. Your journey into the digital frontier starts here!</p>
+                <a href="#news" class="btn">Explore Latest News</a>
+            </div>
+        </section>
+
+        <section id="news">
+            <div class="container">
+                <h2 class="text-center">Latest News & Articles</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <img src="https://via.placeholder.com/600x300/e94560/FFFFFF?text=Next-Gen+Console+Reveal" alt="Next-Gen Console">
+                        <div class="grid-item-content">
+                            <h3>Next-Gen Console Unveiled: Specs and Release Date</h3>
+                            <p>Get all the details on the highly anticipated new gaming console, including its powerful specifications and official launch window. Pre-orders start next month!</p>
+                            <a href="#news-article-1" class="btn btn-small">Read More</a>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://via.placeholder.com/600x300/533483/FFFFFF?text=AI+Gaming+Revolution" alt="AI Gaming">
+                        <div class="grid-item-content">
+                            <h3>AI in Gaming: How Machine Learning is Changing Gameplay</h3>
+                            <p>Explore how artificial intelligence is being integrated into modern games, creating more dynamic NPCs, adaptive difficulty, and personalized experiences.</p>
+                            <a href="#news-article-2" class="btn btn-small">Read More</a>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://via.placeholder.com/600x300/0f3460/FFFFFF?text=Top+Gaming+Peripherals" alt="Gaming Peripherals">
+                        <div class="grid-item-content">
+                            <h3>Top 10 Gaming Peripherals to Boost Your Performance</h3>
+                            <p>From ergonomic mice to ultra-responsive keyboards, discover the essential gear that can give you a competitive edge in any game.</p>
+                            <a href="#news-article-3" class="btn btn-small">Read More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="tech-insights" class="section">
-            <h2>Tech Insights &gt; Decode Innovation</h2>
-            <p>Stay updated with the latest advancements in technology. From artificial intelligence to quantum computing, we provide in-depth analyses, news, and visionary perspectives on the tech landscape.</p>
-            <div class="grid-container">
-                <div class="grid-item">
-                    <h3>AI & Machine Learning</h3>
-                    <p>Dive into the world of intelligent algorithms and automated systems. Explore their impact on society and industry.</p>
-                    <a href="#" class="button">Read Data</a>
-                </div>
-                <div class="grid-item">
-                    <h3>Blockchain & Decentralization</h3>
-                    <p>Understand the power of distributed ledgers and their potential to revolutionize digital trust and transactions.</p>
-                    <a href="#" class="button">Decrypt Now</a>
-                </div>
-                <div class="grid-item">
-                    <h3>Robotics & Automation</h3>
-                    <p>Discover the evolution of robotics and how automation is transforming manufacturing, logistics, and daily life.</p>
-                    <a href="#" class="button">Analyze Systems</a>
+        <section id="products">
+            <div class="container">
+                <h2 class="text-center">Our Featured Products</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <img src="https://via.placeholder.com/600x300/16213e/FFFFFF?text=Virtual+Reality+Headset" alt="VR Headset">
+                        <div class="grid-item-content">
+                            <h3>Quantum VR Headset X1</h3>
+                            <p>Experience unparalleled immersion with our next-gen VR headset, featuring 8K resolution and haptic feedback. Limited stock available!</p>
+                            <a href="#" class="btn btn-small">View Details</a>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=Mechanical+Keyboard" alt="Mechanical Keyboard">
+                        <div class="grid-item-content">
+                            <h3>AuraMech RGB Keyboard</h3>
+                            <p>Unleash rapid-fire keystrokes with our durable mechanical keyboard, customizable RGB lighting, and anti-ghosting technology.</p>
+                            <a href="#" class="btn btn-small">View Details</a>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://via.placeholder.com/600x300/0f3460/FFFFFF?text=Gaming+Laptop" alt="Gaming Laptop">
+                        <div class="grid-item-content">
+                            <h3>Vortex Gaming Laptop Pro</h3>
+                            <p>Power your adventures on the go with the Vortex Pro, boasting a high-refresh-rate display and the latest graphics card.</p>
+                            <a href="#" class="btn btn-small">View Details</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="developers" class="section">
-            <h2>Developers &gt; Build the Future</h2>
-            <p>Our developer resources offer tools, APIs, and documentation to help you create groundbreaking games and innovative tech solutions. Join our dev community and bring your visions to life.</p>
-            <div class="grid-container">
-                <div class="grid-item">
-                    <h3>API Documentation</h3>
-                    <p>Access our comprehensive API guides to integrate Synthex Nexus functionalities into your projects.</p>
-                    <a href="#" class="button">View Docs</a>
-                </div>
-                <div class="grid-item">
-                    <h3>SDK Downloads</h3>
-                    <p>Download our Software Development Kits for various platforms and start building with ease.</p>
-                    <a href="#" class="button">Get SDK</a>
-                </div>
-                <div class="grid-item">
-                    <h3>Community Forums</h3>
-                    <p>Connect with other developers, share knowledge, and get support from the Synthex community.</p>
-                    <a href="#" class="button">Join Forum</a>
+        <section id="community">
+            <div class="container">
+                <h2 class="text-center">Join Our Vibrant Community</h2>
+                <p class="text-center">Connect with fellow gamers and tech enthusiasts, share your insights, and find your squad!</p>
+                <div class="community-links">
+                    <a href="https://discord.gg/placeholder" target="_blank" class="community-link">
+                        <div class="icon">&#x1F5E1;</div> <!-- Unicode for a chat bubble/speech balloon, representing Discord -->
+                        <h3>Discord Server</h3>
+                        <p>Real-time chat, voice channels, and exclusive events.</p>
+                    </a>
+                    <a href="https://forum.example.com" target="_blank" class="community-link">
+                        <div class="icon">&#x1F4DA;</div> <!-- Unicode for a book, representing forum -->
+                        <h3>Official Forums</h3>
+                        <p>In-depth discussions, guides, and technical support.</p>
+                    </a>
+                    <a href="https://github.com/ArcadeVerse" target="_blank" class="community-link">
+                        <div class="icon">&#x1F4BB;</div> <!-- Unicode for laptop, representing tech/dev content -->
+                        <h3>GitHub & Dev Blog</h3>
+                        <p>Explore our open-source projects and developer insights.</p>
+                    </a>
                 </div>
             </div>
         </section>
-    </div>
 
-    <footer id="contact">
-        <p>&copy; 2023 Synthex Nexus. All Rights Reserved. // Quantum Data Protocol // Epsilon Licensing</p>
-        <p>Connect with us: <a href="#">Terminal</a> | <a href="#">Sub-Reddit</a> | <a href="#">AetherNet</a></p>
+        <section id="documentation">
+            <div class="container">
+                <h2 class="text-center">Documentation & Support</h2>
+
+                <div class="doc-category">
+                    <h3>Frequently Asked Questions (FAQs)</h3>
+                    <div class="faq-item">
+                        <details>
+                            <summary>How do I update my ArcadeVerse drivers?</summary>
+                            <p>To update your drivers, please visit our downloads page linked in the footer. Select your product model and download the latest driver package. Follow the installation instructions provided in the readme file.</p>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>What are the system requirements for Apex Legends Remastered?</summary>
+                            <p>Minimum requirements: Intel Core i5-3570K / AMD Ryzen 3 1300X, 8GB RAM, NVIDIA GeForce GTX 970 / AMD Radeon R9 290. Recommended: Intel Core i7-7700K / AMD Ryzen 5 1600, 16GB RAM, NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700.</p>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>My VR headset isn't detected, what should I do?</summary>
+                            <p>First, ensure all cables are securely connected. Try restarting your computer and the VR headset. If the issue persists, check our troubleshooting guide or contact support.</p>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="doc-category">
+                    <h3>Getting Started Guides</h3>
+                    <div class="guide-item">
+                        <h4>Guide 1: Optimizing Your PC for Gaming Performance</h4>
+                        <p>Learn how to tweak your Windows settings, update graphics drivers, manage background applications, and optimize in-game settings for maximum FPS and a smoother gaming experience.</p>
+                        <a href="https://www.pcgamer.com/how-to-optimize-your-gaming-pc/" target="_blank">External Resource: PC Gamer Guide</a>
+                    </div>
+                    <div class="guide-item">
+                        <h4>Guide 2: Setting Up Your New Streaming Rig</h4>
+                        <p>A step-by-step guide to assembling your streaming PC, installing necessary software like OBS Studio, configuring audio and video inputs, and going live with your first stream.</p>
+                    </div>
+                </div>
+
+                <div class="doc-category">
+                    <h3>API Reference (Mock Example)</h3>
+                    <p>This section outlines the available endpoints for our fictional ArcadeVerse Game Data API. Please note: This is a simulated reference for demonstration purposes.</p>
+                    <table class="api-table">
+                        <thead>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Authentication</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/api/v1/games</code></td>
+                                <td>GET</td>
+                                <td>Retrieve a list of all available games.</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/games/{id}</code></td>
+                                <td>GET</td>
+                                <td>Get details for a specific game by ID.</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/users/{id}/profile</code></td>
+                                <td>GET</td>
+                                <td>Retrieve a user's public profile data.</td>
+                                <td>Required (Bearer Token)</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/achievements/{gameId}</code></td>
+                                <td>GET</td>
+                                <td>List achievements for a given game.</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 20px;">For more detailed API documentation and sandbox access, please contact our developer relations team.</p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">External Resource: MDN Web Docs (for general API concepts)</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="text-center">About ArcadeVerse</h2>
+                <p>ArcadeVerse was founded by a team of passionate gamers and tech innovators with a vision to create the ultimate destination for everything interactive and digital. Our mission is to provide engaging content, cutting-edge products, and a thriving community for enthusiasts worldwide.</p>
+                <p>We believe in pushing the boundaries of technology and gaming, fostering creativity, and connecting people through shared digital experiences. Join us on our quest to shape the future of entertainment!</p>
+
+                <h3 class="text-center" style="margin-top: 50px;">Meet Our Team</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://via.placeholder.com/150/e94560/FFFFFF?text=J.D." alt="Jane Doe">
+                        <h4>Jane Doe</h4>
+                        <p>CEO & Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://via.placeholder.com/150/533483/FFFFFF?text=R.S." alt="Richard Smith">
+                        <h4>Richard Smith</h4>
+                        <p>Head of Content</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://via.placeholder.com/150/0f3460/FFFFFF?text=E.W." alt="Emily White">
+                        <h4>Emily White</h4>
+                        <p>Lead Developer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="text-center">Get in Touch</h2>
+                <div class="contact-form-container">
+                    <p class="text-center" style="margin-bottom: 30px;">Have questions, feedback, or just want to say hello? Fill out the form below!</p>
+                    <form action="mailto:info@arcadeverse.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2023 ArcadeVerse. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+            <div class="social-links">
+                <a href="https://twitter.com/placeholder" target="_blank" title="Twitter">&#x1F426;</a> <!-- Bird emoji for Twitter -->
+                <a href="https://facebook.com/placeholder" target="_blank" title="Facebook">&#x1F465;</a> <!-- Two people emoji for Facebook -->
+                <a href="https://instagram.com/placeholder" target="_blank" title="Instagram">&#x1F4F8;</a> <!-- Camera emoji for Instagram -->
+            </div>
+        </div>
     </footer>
-
 </body>
 </html>
 ```
