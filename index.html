@@ -1,435 +1,406 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>/// CYBERNEXUS /// Your Digital Frontier</title>
+    <title>Cyber-Pulse: Tech & Gaming Nexus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for consistent styling and easy theme changes */
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-medium: #181818;
-            --text-light: #e0e0e0;
-            --neon-blue: #00ffff; /* Cyan */
-            --neon-purple: #8a2be2; /* Blue-Violet */
-            --neon-green: #00ff00; /* Lime */
-            --accent-red: #ff3366; /* Magenta-ish red */
-            --border-color: #2a2a2a;
-            --glow-strength: 0 0 10px; /* Base glow for shadows */
+            --bg-color: #0d0d1a;
+            --primary-color: #00ffcc; /* Neon green/teal */
+            --secondary-color: #ff33cc; /* Neon pink/magenta */
+            --text-color: #e0e0e0;
+            --card-bg: #1a1a33;
+            --border-glow: #00ffff; /* Cyan glow */
+            --shadow-alpha: 0.6;
         }
 
-        /* Base styles for the body and global elements */
         body {
-            font-family: 'Consolas', 'Courier New', monospace, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: 'Share Tech Mono', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll from box shadows */
-            -webkit-font-smoothing: antialiased; /* Smooths font rendering */
-            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Global reset for links */
-        a {
-            color: var(--neon-blue);
-            text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--neon-green);
-            text-shadow: var(--glow-strength) var(--neon-green);
-        }
-
-        /* Header and Navigation Bar */
-        header {
-            background-color: var(--bg-medium);
-            padding: 1.5em 0;
-            border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2); /* Subtle header glow */
-            position: sticky; /* Keeps header visible on scroll */
-            top: 0;
-            z-index: 1000; /* Ensures header is on top of other content */
-        }
-
-        nav {
+        .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 255, 204, var(--shadow-alpha));
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2em;
         }
 
-        .logo {
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            margin: 0;
             font-size: 2.2em;
-            font-weight: bold;
-            color: var(--neon-blue);
-            text-shadow: var(--glow-strength) var(--neon-blue);
-            letter-spacing: 2px;
-            transform: skewX(-5deg); /* Cyberpunk tilt effect */
-            transition: text-shadow 0.3s ease;
+            text-shadow: 0 0 10px var(--primary-color);
         }
 
-        .logo:hover {
-            text-shadow: var(--glow-strength) var(--neon-green), 0 0 20px var(--neon-green);
-        }
-
-        .nav-links {
+        header nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 2em;
         }
 
-        .nav-links li a {
+        header nav ul li {
+            margin-left: 30px;
+        }
+
+        header nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
             font-size: 1.1em;
-            padding: 0.5em 0;
-            border-bottom: 2px solid transparent; /* For hover effect */
-            transition: border-bottom 0.3s ease;
-        }
-
-        .nav-links li a:hover {
-            border-bottom: 2px solid var(--neon-purple);
-            color: var(--neon-purple);
-            text-shadow: var(--glow-strength) var(--neon-purple);
-        }
-
-        /* Main Content Area */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2em;
-        }
-
-        /* General Section Styling */
-        section {
-            background-color: var(--bg-medium);
-            margin-bottom: 3em;
-            padding: 2em;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1); /* Subtle section glow */
             position: relative;
-            overflow: hidden; /* Contains pseudo-elements for patterns */
-            border-radius: 5px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
-        /* Subtle grid pattern for sections (pure CSS) */
-        section::before {
+        header nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: var(--secondary-color);
+            text-shadow: 0 0 8px var(--secondary-color);
+        }
+
+        header nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--bg-color), #2d003d); /* Dark gradient */
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            box-shadow: 0 0 20px rgba(255, 51, 204, var(--shadow-alpha));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, transparent 70%);
+            animation: pulse-glow 15s infinite alternate;
+            z-index: 1;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--primary-color), 0 0 25px rgba(0, 255, 204, 0.7);
+        }
+
+        .hero-section p {
+            font-size: 1.3em;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px var(--primary-color);
+            border: 2px solid var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--secondary-color), 0 0 30px rgba(255, 51, 204, 0.8);
+            border-color: var(--secondary-color);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+            background-color: var(--card-bg);
+            border-bottom: 1px dashed rgba(var(--primary-color), 0.3);
+        }
+
+        .content-section:nth-of-type(odd) {
+            background-color: rgba(var(--bg-color), 0.8);
+        }
+
+
+        .content-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary-color);
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px var(--secondary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 0 15px rgba(0, 255, 255, var(--shadow-alpha));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image:
-                repeating-linear-gradient(0deg, var(--border-color) 0 1px, transparent 1px 40px),
-                repeating-linear-gradient(90deg, var(--border-color) 0 1px, transparent 1px 40px);
-            background-size: 40px 40px;
-            opacity: 0.05; /* Very subtle grid overlay */
-            z-index: 0;
-        }
-
-        section > *:not(.section-grid) { /* Ensures content stays above the grid pattern */
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Headings styling */
-        h1, h2, h3 {
-            color: var(--neon-green);
-            text-shadow: var(--glow-strength) var(--neon-green);
-            margin-bottom: 1em;
-            border-bottom: 2px dashed var(--accent-red);
-            padding-bottom: 0.5em;
-            display: inline-block; /* To make border-bottom fit text width */
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Hero Section Specific Styling */
-        #hero {
-            text-align: center;
-            padding: 5em 2em;
-            background: linear-gradient(45deg, var(--bg-medium), #101010);
-            border: 2px solid var(--neon-blue);
-            box-shadow: var(--glow-strength) var(--neon-blue), 0 0 30px var(--neon-blue);
-            margin-top: 2em;
-            position: relative;
-            animation: pulse-border 4s infinite ease-in-out alternate;
-        }
-
-        @keyframes pulse-border {
-            0% { border-color: var(--neon-blue); box-shadow: var(--glow-strength) var(--neon-blue); }
-            50% { border-color: var(--neon-purple); box-shadow: var(--glow-strength) var(--neon-purple), 0 0 40px var(--neon-purple); }
-            100% { border-color: var(--neon-blue); box-shadow: var(--glow-strength) var(--neon-blue); }
-        }
-
-        #hero h1 {
-            font-size: 3.5em;
-            color: var(--text-light);
-            text-shadow: 0 0 5px var(--neon-blue), 0 0 15px var(--neon-blue), 0 0 25px var(--neon-blue);
-            margin-bottom: 0.5em;
-            letter-spacing: 3px;
-            border-bottom: none; /* Override general h1 border */
-            display: block; /* Takes full width for main title */
-        }
-
-        #hero p {
-            font-size: 1.3em;
-            color: var(--text-light);
-            opacity: 0.8;
-            margin-bottom: 2em;
-        }
-
-        .cta-button {
-            background-color: var(--neon-purple);
-            color: var(--text-light);
-            padding: 1em 2em;
-            border: 2px solid var(--neon-purple);
-            border-radius: 5px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-            text-transform: uppercase;
-            font-weight: bold;
-            box-shadow: var(--glow-strength) var(--neon-purple);
-            letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            background-color: transparent;
-            color: var(--neon-purple);
-            box-shadow: var(--glow-strength) var(--neon-blue), 0 0 20px var(--neon-purple);
-            border-color: var(--neon-blue);
-        }
-
-        /* Content Cards Grid Layout */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2em;
-            margin-top: 2em;
-        }
-
-        .card {
-            background-color: #121212;
-            border: 1px solid var(--border-color);
-            padding: 1.5em;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.05); /* Subtle card shadow */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(45deg, rgba(var(--primary-color), 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
 
         .card:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), 0 0 25px rgba(0, 255, 255, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 40px rgba(255, 51, 204, 0.5);
+            border-color: var(--secondary-color);
         }
 
-        .card h3 {
-            font-size: 1.5em;
-            color: var(--neon-blue);
-            text-shadow: var(--glow-strength) var(--neon-blue);
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h4 {
+            color: var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6em;
             margin-top: 0;
-            margin-bottom: 0.8em;
-            border-bottom: 1px dotted var(--neon-green);
-            padding-bottom: 0.5em;
-            display: block; /* Make dotted line span full width */
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px var(--primary-color);
         }
 
         .card p {
-            font-size: 0.95em;
-            color: var(--text-light);
-            opacity: 0.9;
+            font-size: 1em;
+            color: var(--text-color);
         }
 
-        .card .read-more {
-            display: inline-block;
-            margin-top: 1em;
-            color: var(--neon-purple);
-            font-weight: bold;
-            text-transform: uppercase;
+        /* Footer */
+        footer {
+            background-color: #05050f;
+            color: var(--text-color);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 255, 204, var(--shadow-alpha)) inset;
+        }
+
+        footer p {
+            margin: 5px 0;
             font-size: 0.9em;
         }
 
-        .card .read-more:hover {
-            color: var(--neon-green);
-            text-shadow: var(--glow-strength) var(--neon-green);
-        }
-
-        /* Footer Styling */
-        footer {
-            background-color: var(--bg-medium);
-            text-align: center;
-            padding: 2em;
-            border-top: 2px solid var(--border-color);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-            margin-top: 3em;
-        }
-
         .disclaimer {
-            font-size: 0.85em;
-            color: var(--accent-red);
-            opacity: 0.7;
-            text-shadow: 0 0 5px rgba(255, 51, 102, 0.5);
-            margin: 0;
-            animation: pulse-red 2s infinite alternate; /* Subtle warning animation */
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1em;
+            margin-top: 20px;
+            text-shadow: 0 0 5px var(--secondary-color);
         }
 
-        @keyframes pulse-red {
-            from { opacity: 0.7; text-shadow: 0 0 5px rgba(255, 51, 102, 0.5); }
-            to { opacity: 1; text-shadow: 0 0 8px rgba(255, 51, 102, 0.8), 0 0 12px rgba(255, 51, 102, 0.6); }
+        /* Animations */
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.1; }
         }
 
-        /* Responsive Adjustments */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            nav {
+            header .container {
                 flex-direction: column;
-                gap: 1em;
+                text-align: center;
             }
 
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1em;
+            header nav ul {
+                flex-direction: column;
+                margin-top: 15px;
             }
 
-            .logo {
-                font-size: 1.8em;
+            header nav ul li {
+                margin: 10px 0;
             }
 
-            #hero h1 {
+            .hero-section h2 {
                 font-size: 2.5em;
             }
 
-            #hero p {
-                font-size: 1em;
+            .hero-section p {
+                font-size: 1.1em;
             }
 
-            main {
-                padding: 1em;
+            .btn {
+                width: 80%;
+                display: block;
+                margin: 10px auto;
             }
 
-            section {
-                padding: 1.5em;
+            .content-section h3 {
+                font-size: 2em;
             }
 
-            .card-grid {
-                grid-template-columns: 1fr; /* Stack cards on smaller screens */
+            .grid-container {
+                grid-template-columns: 1fr; /* Single column on small screens */
             }
         }
 
         @media (max-width: 480px) {
-            .nav-links li a {
-                font-size: 0.9em;
+            header h1 {
+                font-size: 1.8em;
             }
-
-            .cta-button {
+            .hero-section h2 {
+                font-size: 2em;
+            }
+            .hero-section p {
                 font-size: 1em;
-                padding: 0.8em 1.5em;
+            }
+            .content-section h3 {
+                font-size: 1.8em;
+            }
+            .card h4 {
+                font-size: 1.3em;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">/// CYBERNEXUS ///</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#tech-updates">Tech</a></li>
-                <li><a href="#gaming-insights">Gaming</a></li>
-                <li><a href="#featured-content">Featured</a></li>
-                <li><a href="#contact">Contact_Us</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Cyber-Pulse</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tech">Tech Lore</a></li>
+                    <li><a href="#gaming">Gaming Grid</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section id="hero">
-            <h1>Plug Into The Future</h1>
-            <p>Your ultimate source for cutting-edge technology and immersive gaming experiences in the digital realm.</p>
-            <button class="cta-button">Explore The Grid</button>
-        </section>
-
-        <section id="tech-updates">
-            <h2>_TECH_UPDATES//DATA_STREAM</h2>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>Quantum Computing Advances</h3>
-                    <p>Recent breakthroughs in quantum entanglement promise unprecedented processing power for future AI and cybersecurity protocols. The race is on.</p>
-                    <a href="#" class="read-more">[READ_MORE]</a>
-                </article>
-                <article class="card">
-                    <h3>Neurolink 7.0 Interface Review</h3>
-                    <p>We dive deep into the new generation of brain-computer interfaces, examining its societal impact, ethical considerations, and real-world applications.</p>
-                    <a href="#" class="read-more">[READ_MORE]</a>
-                </article>
-                <article class="card">
-                    <h3>Synthetic Biology Innovations</h3>
-                    <p>From custom-engineered bioware to self-repairing nanobots, synthetic biology is redefining what it means to be human in a high-tech world.</p>
-                    <a href="#" class="read-more">[READ_MORE]</a>
-                </article>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h2>Dive Into The Digital Frontier</h2>
+                <p>Your ultimate source for cutting-edge technology and immersive gaming experiences.</p>
+                <a href="#tech" class="btn">Explore Tech</a>
+                <a href="#gaming" class="btn">Conquer Gaming</a>
             </div>
         </section>
 
-        <section id="gaming-insights">
-            <h2>_GAMING_INSIGHTS//SIMULATION_LOG</h2>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>"Neon City: Overdrive" Review</h3>
-                    <p>Enter the sprawling, corrupt metropolis of Neon City in the latest open-world RPG. Our full breakdown on its stunning graphics and deep narrative.</p>
-                    <a href="#" class="read-more">[READ_MORE]</a>
-                </article>
-                <article class="card">
-                    <h3>VR Immersion: The Next Frontier</h3>
-                    <p>With haptic suits and neural feedback, VR gaming is becoming indistinguishable from reality. We explore the top headsets and emerging titles.</p>
-                    <a href="#" class="read-more">[READ_MORE]</a>
-                </article>
-                <article class="card">
-                    <h3>Esports: The Global Arena</h3>
-                    <p>From underground circuits to megacorporate sponsorships, esports is a multi-billion credit industry. Meet the rising stars and dominant teams.</p>
-                    <a href="#" class="read-more">[READ_MORE]</a>
-                </article>
+        <section id="tech" class="content-section">
+            <div class="container">
+                <h3>Latest Tech Synapses</h3>
+                <div class="grid-container">
+                    <div class="card">
+                        <h4>AI's Next Evolution</h4>
+                        <p>Exploring the future of artificial intelligence and its impact on human society.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Quantum Computing Unveiled</h4>
+                        <p>The dawn of a new era in computation, breaking traditional barriers.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Cybersecurity Protocols</h4>
+                        <p>Fortifying your digital defenses in an increasingly connected world.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="featured-content">
-            <h2>_FEATURED//DECRYPTED_FILES</h2>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>The Ethics of AI Sentience</h3>
-                    <p>As artificial intelligence grows more sophisticated, questions arise about consciousness and rights. A critical discussion with leading futurists.</p>
-                    <a href="#" class="read-more">[ACCESS_FILE]</a>
-                </article>
-                <article class="card">
-                    <h3>Build Your Own Cyber-Rig</h3>
-                    <p>A comprehensive guide to assembling the ultimate gaming and development workstation, optimized for performance and aesthetic.</p>
-                    <a href="#" class="read-more">[INITIATE_BUILD]</a>
-                </article>
+        <section id="gaming" class="content-section">
+            <div class="container">
+                <h3>Gaming Grid Chronicles</h3>
+                <div class="grid-container">
+                    <div class="card">
+                        <h4>Esports Arena Dominance</h4>
+                        <p>Profiling the champions and strategies in the professional gaming circuit.</p>
+                    </div>
+                    <div class="card">
+                        <h4>VR Immersion Beyond Limits</h4>
+                        <p>Stepping into virtual realities that blur the lines between pixels and perception.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Indie Game Spotlight</h4>
+                        <p>Discovering hidden gems and innovative narratives from independent developers.</p>
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <section id="contact">
-            <h2>_CONTACT_US//DIRECT_LINK</h2>
-            <p style="text-align: center; font-size: 1.1em; color: var(--text-light);">
-                Have a query? Want to contribute to the data stream? Reach out to us through the following channels.
-            </p>
-            <p style="text-align: center;">
-                <a href="mailto:info@cybernexus.com" style="margin: 0 1em;">[EMAIL_COMM]</a>
-                <a href="#" style="margin: 0 1em;">[SECURE_CHAT]</a>
-                <a href="#" style="margin: 0 1em;">[DATA_SUBMIT]</a>
-            </p>
         </section>
     </main>
 
     <footer>
-        <p class="disclaimer">Disclaimer: AI Generated Content may be inaccurate or not working!</p>
+        <div class="container">
+            <p>&copy; 2023 Cyber-Pulse. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: AI Generated Content may be inaccurate or not working!</p>
+        </div>
     </footer>
 </body>
 </html>
-```
