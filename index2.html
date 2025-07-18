@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberNexus - Tech & Gaming Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #1a0f2b;
+            --secondary-bg: #2b1a3f;
+            --accent-glow: #00ffff; /* Cyan neon */
+            --text-color: #e0e0e0;
+            --header-color: #ff00ff; /* Magenta neon */
+            --border-color: #4a004a;
+            --link-hover: #ff66ff;
+            --footer-bg: #10081c;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--secondary-bg);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--header-color);
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--header-color);
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 0 0 10px var(--header-color), 0 0 20px var(--header-color), 0 0 30px var(--header-color);
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { text-shadow: 0 0 10px var(--header-color), 0 0 20px var(--header-color), 0 0 30px var(--header-color); }
+            to { text-shadow: 0 0 15px var(--header-color), 0 0 25px var(--header-color), 0 0 40px var(--header-color); }
+        }
+
+        nav {
+            background-color: var(--primary-bg);
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 1px dashed var(--accent-glow);
+            box-shadow: inset 0 -2px 5px var(--accent-glow);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+            padding: 5px 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px var(--accent-glow);
+        }
+
+        nav a:hover {
+            color: var(--link-hover);
+            border-color: var(--link-hover);
+            box-shadow: 0 0 10px var(--link-hover);
+            text-shadow: 0 0 8px var(--link-hover), 0 0 15px var(--link-hover);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); /* Soft cyan glow */
+            border-radius: 8px;
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.05) 0%, transparent 70%);
+            animation: background-pulse 10s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes background-pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        section {
+            background-color: var(--primary-bg);
+            padding: 30px;
+            border: 1px solid var(--accent-glow);
+            box-shadow: 0 0 15px var(--accent-glow);
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--link-hover), 0 0 40px rgba(255,102,255,0.5);
+        }
+
+        section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--header-color);
+            font-size: 2em;
+            border-bottom: 2px dashed var(--accent-glow);
+            padding-bottom: 10px;
+            margin-top: 0;
+            text-shadow: 0 0 8px var(--header-color);
+        }
+
+        .content-box {
+            margin-bottom: 20px;
+            background-color: var(--secondary-bg);
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-glow);
+            box-shadow: 0 0 10px rgba(0,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-box::before {
+            content: '>>>';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%) rotateY(180deg);
+            color: var(--accent-glow);
+            font-size: 1.5em;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .content-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--link-hover);
+            margin-top: 0;
+            font-size: 1.4em;
+            text-shadow: 0 0 5px var(--link-hover);
+        }
+
+        .content-box p {
+            color: var(--text-color);
+            font-size: 0.95em;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            box-shadow: inset 0 2px 10px rgba(255,0,255,0.2);
+            font-size: 0.8em;
+            font-family: 'Share Tech Mono', monospace;
+            text-shadow: 0 0 5px rgba(255,0,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CyberNexus</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#tech">/TECH/</a></li>
+            <li><a href="#gaming">/GAMING/</a></li>
+            <li><a href="#contact">/CONTACT/</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section id="tech">
+            <h2>>>> TECHNOSCAPE <<<</h2>
+            <div class="content-box">
+                <h3>[ AI ASCENSION ]</h3>
+                <p>Analyzing the rapid evolution of artificial intelligence and its impact on future societies. From neural networks to autonomous systems, the digital frontier expands.</p>
+            </div>
+            <div class="content-box">
+                <h3>[ QUANTUM REALMS ]</h3>
+                <p>Exploring the cutting edge of quantum computing, encryption, and the potential to revolutionize data processing beyond current limitations.</p>
+            </div>
+            <div class="content-box">
+                <h3>[ CYBER-SECURITY PROTOCOLS ]</h3>
+                <p>Deconstructing advanced defense mechanisms against cyber threats, data breaches, and digital espionage in an increasingly connected world.</p>
+            </div>
+        </section>
+        <section id="gaming">
+            <h2>>>> GAMING GRID <<<</h2>
+            <div class="content-box">
+                <h3>[ NEXT-GEN IMMERSION ]</h3>
+                <p>Diving into the latest advancements in virtual reality, augmented reality, and haptic feedback systems creating unparalleled gaming experiences.</p>
+            </div>
+            <div class="content-box">
+                <h3>[ ESPORTS ARENA ]</h3>
+                <p>Tracking the rise of competitive gaming, professional leagues, and the global phenomenon of esports culture. Strategies, teams, and tournaments.</p>
+            </div>
+            <div class="content-box">
+                <h3>[ RETRO REBOOTS ]</h3>
+                <p>A look back at classic titles reimagined with modern graphics and gameplay mechanics, bridging the gap between nostalgic past and high-tech future.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        Disclaimer: AI Generated Content may be inaccurate or not working!
+    </footer>
+</body>
+</html>
